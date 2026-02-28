@@ -21,7 +21,7 @@
 
     - name: Create custom index.html file
       copy:
-        src: /c/devops/terraform-3/index.html
+        src: index.html
         dest: /usr/share/nginx/html/index.html
 
     - name: Start and enable Nginx service
