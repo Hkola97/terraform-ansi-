@@ -1,0 +1,27 @@
+---
+- name: Install Nginx on RedHat
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install EPEL repository
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Configure Nginx firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
