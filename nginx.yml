@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx on RedHat
-  host: localhost
+  hosts: localhost
   connection: local
   become: yes
   tasks:
