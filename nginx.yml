@@ -1,6 +1,7 @@
 ---
 - name: Install Nginx on RedHat
-  hosts: frontend
+  hosts: localhost
+  connection: local
   become: yes
   tasks:
     - name: Install EPEL repository
