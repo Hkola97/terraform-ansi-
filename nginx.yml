@@ -1,7 +1,6 @@
 ---
 - name: Install Nginx on RedHat
-  hosts: localhost
-  connection: local
+  host: frontend
   become: yes
   tasks:
     - name: Install EPEL repository
@@ -14,10 +13,20 @@
         name: nginx
         state: present
 
+    - name: Remove default index.html file
+      file:
+        path: /usr/share/nginx/html/index.html
+        state: absent
+
+    - name: Create custom index.html file
+      copy:
+        src: /c/devops/terraform-3/index.html
+        dest: /usr/share/nginx/html/index.html
+
     - name: Start and enable Nginx service
       systemd:
         name: nginx
         state: started
         enabled: yes
 
-   
+ 
