@@ -20,9 +20,4 @@
         state: started
         enabled: yes
 
-    - name: Configure Nginx firewall
-      firewalld:
-        service: http
-        permanent: yes
-        state: enabled
-        immediate: yes
+   
